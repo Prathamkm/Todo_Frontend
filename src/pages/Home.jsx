@@ -69,6 +69,21 @@ const Home = () => {
     }
   };
 
+  const deleteAllTask = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.delete(`${server}/task/deleteall`, {
+        withCredentials: true,
+      });
+      toast.success(data.message);
+      setRefresh((prev) => !prev);
+      setLoading(false);
+    } catch (error) {
+      toast.error(error.response.data.message);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     axios
       .get(`${server}/task/my`, {
@@ -103,7 +118,6 @@ const Home = () => {
               placeholder="Description"
               required
             />
-
             <button disabled={loading} type="submit">
               Add Task
             </button>
@@ -111,6 +125,9 @@ const Home = () => {
         </section>
       </div>
 
+      <button onClick={deleteAllTask} type="button" className="btn btn-danger">
+        Delete All task
+      </button>
       <section className="todosContainer">
         {tasks.map((i) => (
           <TodoItem

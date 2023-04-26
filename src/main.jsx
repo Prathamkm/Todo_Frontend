@@ -3,8 +3,9 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./styles/app.scss";
 import { createContext } from "react";
+// import "../public/index.html";
 
-export const server = "http://localhost:4000/api/v1";
+export const server = "https://nodejstodoapp-r90v.onrender.com";
 
 export const Context = createContext({ isAuthenticated: false });
 
