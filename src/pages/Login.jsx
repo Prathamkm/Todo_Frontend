@@ -57,7 +57,7 @@ const Login = () => {
             placeholder="Password"
             required
           />
-          <button disabled={loading} type="submit">
+          <button type="submit">
             Login
           </button>
           <h4>Or</h4>
